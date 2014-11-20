@@ -380,7 +380,7 @@ function AC_OnAdminInit()
 	// AutoChimp admin menu is clicked on.  Ensures that these scripts are only
 	// loaded when needed (flow is a little goofy - search for
 	// "wp_enqueue_script( 'autochimp-ajax-request'" for the next step).
-	$pluginFolder = get_bloginfo('wpurl') . '/wp-content/plugins/autochimp/';
+	$pluginFolder = plugins_url() . '/autochimp/';
 	wp_register_script( 'autochimp-ajax-request', $pluginFolder.'js/autochimp.js', array( 'jquery' ) );
 	
 	// Some AutoChimp plugins may use JS as well.  Load them here.
