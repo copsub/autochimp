@@ -110,7 +110,17 @@ function __autoload( $class )
 
 // Global variables - If you change this, be sure to see AC_FetchMappedWordPressData()
 // which has static comparisons to the values in this array.  FIX LATER.
-$wpUserDataArray = array( 'Username', 'Nickname', 'Website', 'Bio' , /*'AIM', 'Yahoo IM', 'Jabber-Google Chat'*/ );
+$wpUserDataArray = array( 'Username', 'Nickname', 'Website', 'Bio' ,  /*'AIM', 'Yahoo IM', 'Jabber-Google Chat'*/ );
+
+$all_user_meta_options = $wpdb->get_results(
+  "
+  SELECT meta_key
+	FROM ".$wpdb->prefix."usermeta
+	GROUP BY meta_key"
+);
+foreach( $all_user_meta_options as $result ){
+	$wpUserDataArray[] = $result->meta_key;
+}
 
 //
 //	Actions to hook to allow AutoChimp to do it's work
@@ -1049,6 +1059,12 @@ function AC_FetchMappedWordPressData( $userID )
 			elseif ( 0 === strcmp( $field, 'Jabber-Google Chat' ) )
 			{
 				$value = $user_info->user_description;
+				$dataArray[] = array( 	'name' => $optionName,
+										'tag' => $fieldData,
+										'value' => $value );
+			}
+			else{
+				$value = $user_info->{$field};
 				$dataArray[] = array( 	'name' => $optionName,
 										'tag' => $fieldData,
 										'value' => $value );
