@@ -112,6 +112,7 @@ function __autoload( $class )
 // which has static comparisons to the values in this array.  FIX LATER.
 $wpUserDataArray = array( 'Username', 'Nickname', 'Website', 'Bio' ,  /*'AIM', 'Yahoo IM', 'Jabber-Google Chat'*/ );
 
+global $wpdb;
 $all_user_meta_options = $wpdb->get_results(
   "
   SELECT meta_key
