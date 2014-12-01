@@ -145,7 +145,7 @@ add_action('wp_ajax_run_sync_users', 'AC_OnRunSyncUsers');
 add_action('admin_notices', 'AC_OnAdminNotice' );
 add_action('admin_init', 'AC_OnAdminInit' );
 add_action('plugins_loaded', 'AC_OnMUPluginsLoaded');
-register_activation_hook( WP_PLUGIN_DIR . '/autochimp/autochimp.php', 'AC_OnActivateAutoChimp' );
+register_activation_hook( plugin_dir_path( __FILE__ ) . 'autochimp.php', 'AC_OnActivateAutoChimp' );
 
 //
 //	Ajax
@@ -381,7 +381,7 @@ function AC_OnAdminInit()
 	// AutoChimp admin menu is clicked on.  Ensures that these scripts are only
 	// loaded when needed (flow is a little goofy - search for
 	// "wp_enqueue_script( 'autochimp-ajax-request'" for the next step).
-	$pluginFolder = plugins_url() . '/autochimp/';
+	$pluginFolder = plugin_dir_url( __FILE__ );
 	wp_register_script( 'autochimp-ajax-request', $pluginFolder.'js/autochimp.js', array( 'jquery' ) );
 	
 	// Some AutoChimp plugins may use JS as well.  Load them here.

@@ -532,7 +532,7 @@ function AC_UpdateCampaignCategoryMappings()
 //
 function AC_ShowSupportInfo( $uiWidth )
 {
-	$pluginFolder = plugins_url() . '/autochimp/';
+	$pluginFolder = plugin_dir_url( __FILE__ );
 ?>
 	<div id="info_box" class="postbox" style="width:<?php echo $uiWidth; ?>px">
 	<h3 class='hndle'><span>Support and Help</span></h3>

@@ -13,7 +13,7 @@ wp_nonce_field('mailchimpz-nonce');
 $uiWidth = '708';
 $tableWidth = '675';
 
-$pluginFolder = plugins_url() . '/autochimp/';
+$pluginFolder = plugin_dir_url(__FILE__);
 
 // Fetch the Key from the DB here
 $apiKey = get_option( WP88_MC_APIKEY, '0' );
