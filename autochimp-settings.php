@@ -267,7 +267,7 @@ if ( $active_tab == 'mailing_lists' )
 		$totalTime = gmdate("H:i:s", $numUsers * 3);
 	?>
 	<div class="submit"><input type="button" name="sync_existing_users" id="sync_existing_users" value="Sync Existing Users" 
-		onclick="this.disabled='true'; timerID = setInterval( getSyncProgress, 1000 ); runSyncUsers( timerID );"/>
+		onclick="this.disabled='true'; timerID = setInterval( getSyncProgress, 5000 ); runSyncUsers( timerID );"/>
 	</div>
 
 	<div class="clear"></div>
