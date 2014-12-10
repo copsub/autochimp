@@ -156,6 +156,7 @@ register_activation_hook( plugin_dir_path( __FILE__ ) . 'autochimp.php', 'AC_OnA
 //
 function AC_OnRunSyncUsers()
 {
+	session_write_close();
 	$numSuccess = 0;
 	$numFailed = 0;
 	$summary = '<strong>Report: </strong>';
@@ -205,6 +206,7 @@ function AC_OnRunSyncUsers()
 //
 function AC_OnQuerySyncUsers()
 {
+	session_write_close();
 	$percent = get_option( WP88_MC_MANUAL_SYNC_PROGRESS, 0 );
 	$status = get_option( WP88_MC_MANUAL_SYNC_STATUS, 'Running sync...' );
 	echo $percent . '#' . $status;
